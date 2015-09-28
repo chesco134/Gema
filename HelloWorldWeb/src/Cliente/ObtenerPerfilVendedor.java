@@ -1,4 +1,4 @@
-package Vendedor;
+package Cliente;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -49,8 +49,7 @@ public class ObtenerPerfilVendedor extends HttpServlet {
 				Connection con = ping.makeConnection("root", "sharPedo319");
 				String resp = null;
 				try {
-					CallableStatement stmnt = con
-							.prepareCall("{call Comparativo(?)}");
+					CallableStatement stmnt = con.prepareCall("{call Comparativo(?)}");
 					stmnt.setString(1, mail);
 					//resp = stmnt.getString(1);
 					stmnt.executeUpdate();
