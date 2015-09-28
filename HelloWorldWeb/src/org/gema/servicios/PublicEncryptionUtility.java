@@ -1,4 +1,4 @@
-package org.capiz.greeting;
+package org.gema.servicios;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;

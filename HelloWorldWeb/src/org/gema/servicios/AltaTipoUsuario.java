@@ -1,12 +1,10 @@
-package org.capiz.greeting;
+package org.gema.servicios;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,44 +12,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.capiz.encuestas.DBConnection;
+import org.gema.logIn.DBConnection;
 
 /**
- * Servlet implementation class Horarios
+ * Servlet implementation class Comprador
  */
-@WebServlet("/Horarios")
-public class Horarios extends HttpServlet {
+@WebServlet("/Comprador")
+public class AltaTipoUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Horarios() {
+    public AltaTipoUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
- 
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
-		String mail = request.getParameter("Correo");
+		int tag = Integer.parseInt(request.getParameter("tipoUsuario"));
+		String tag2 = request.getParameter("usuario");
 		DBConnection ping = new DBConnection();
 		Connection con =  ping.makeConnection("root", "sharPedo319");
 		String resp = null;
 		try {
-			Date date = new Date ();
-			SimpleDateFormat dateF = new SimpleDateFormat("dd/MM/yyyy");
-			SimpleDateFormat datetime = new SimpleDateFormat("hh:mm:ss");
-			CallableStatement stmnt = con.prepareCall("{call Tlaboral(?,?,?,?)}");
-			stmnt.setString(4, mail);
-			stmnt.setString(1, "99:99:99");
-			stmnt.setString(2, "99:99:99");
-			stmnt.setString(3, "00/00/0000");
-			//stmnt.executeUpdate();
-			resp = "Hello";
+			CallableStatement stmnt = con.prepareCall("{call insertaTipoUsuario(?,?)}");
+			stmnt.setInt(1, tag);
+			stmnt.setString(2, tag2);
+			stmnt.executeUpdate();
+			resp = "Corrrecto";
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,28 +57,23 @@ public class Horarios extends HttpServlet {
 		out.print(resp);
 	}
 
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
-		String mail = request.getParameter("Correo");
+		int tag = Integer.parseInt(request.getParameter("tipoUsuario"));
+		String tag2 = request.getParameter("usuario");
 		DBConnection ping = new DBConnection();
 		Connection con =  ping.makeConnection("root", "sharPedo319");
 		String resp = null;
 		try {
-			Date date = new Date ();
-			SimpleDateFormat dateF = new SimpleDateFormat("dd/MM/yyyy");
-			SimpleDateFormat datetime = new SimpleDateFormat("hh:mm:ss");
-			CallableStatement stmnt = con.prepareCall("{call Tlaboral(?,?,?,?)}");
-			stmnt.setString(4, mail);
-			stmnt.setString(1, datetime.format(date));
-			stmnt.setString(2, datetime.format(date));
-			stmnt.setString(3, dateF.format(date));
-			//stmnt.executeUpdate();
-			resp = "Hello";
+			CallableStatement stmnt = con.prepareCall("{call insertaTipoUsuario(?,?)}");
+			stmnt.setInt(1, tag);
+			stmnt.setString(2, tag2);
+			stmnt.executeUpdate();
+			resp = "Corrrecto";
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

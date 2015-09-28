@@ -1,4 +1,4 @@
-package org.capiz.encuestas;
+package org.gema.logIn;
 
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
-import org.capiz.greeting.PublicEncryptionUtility;
+import org.gema.servicios.PublicEncryptionUtility;
 import org.json.JSONException;
 import org.json.JSONObject;
 

@@ -1,4 +1,4 @@
-package org.capiz.encuestas;
+package org.gema.logIn;
 
 import java.io.IOException;
 import java.io.PrintWriter;
