@@ -1,11 +1,11 @@
-package org.gema.servicios;
+package Vendedor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
-//import java.sql.Types;
+import java.sql.Types;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

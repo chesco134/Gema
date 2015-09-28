@@ -1,4 +1,4 @@
-package org.gema.servicios;
+package Administrador;
 
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -1,4 +1,4 @@
-package org.gema.servicios;
+package Vendedor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
