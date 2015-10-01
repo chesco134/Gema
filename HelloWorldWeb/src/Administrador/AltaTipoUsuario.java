@@ -13,12 +13,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.gema.logIn.DBConnection;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Servlet implementation class Comprador
  */
 @WebServlet("/Comprador")
 public class AltaTipoUsuario extends HttpServlet {
+
+public static JSONObject json;
+	
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -40,6 +46,7 @@ public class AltaTipoUsuario extends HttpServlet {
 		DBConnection ping = new DBConnection();
 		Connection con =  ping.makeConnection("root", "sharPedo319");
 		String resp = null;
+		json = new JSONObject();
 		try {
 			CallableStatement stmnt = con.prepareCall("{call insertaTipoUsuario(?,?)}");
 			stmnt.setInt(1, tag);
@@ -53,8 +60,16 @@ public class AltaTipoUsuario extends HttpServlet {
 		} finally {
 			ping.closeConnection();
 		}
-	
-		out.print(resp);
+		try {
+			json.put("result", resp);
+			
+			System.out.println(json.toString());
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		out.print(json.toString());
 	}
 
 	/**
@@ -78,11 +93,20 @@ public class AltaTipoUsuario extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resp = " Error";
-		} finally {
+		} 
+		finally {
 			ping.closeConnection();
 		}
-	
-		out.print(resp);
+		try {
+			json.put("result", resp);
+			
+			System.out.println(json.toString());
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		out.print(json.toString());
+	}
 	}
 
-}

@@ -1,4 +1,4 @@
-package Cliente;
+package Vendedor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,21 +16,13 @@ import org.gema.logIn.DBConnection;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Servlet implementation class ObtenerPerfilVendedor
- */
-@WebServlet("/ObtenerPerfilVendedor")
-public class ObtenerPerfilVendedor extends HttpServlet {
+public class ObtenerProducto {
 	private static final long serialVersionUID = 1L;
 	JSONObject json;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ObtenerPerfilVendedor() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
+  
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -51,7 +42,7 @@ public class ObtenerPerfilVendedor extends HttpServlet {
 				Connection con = ping.makeConnection("root", "sharPedo319");
 				String resp = null;
 				try {
-					CallableStatement stmnt = con.prepareCall("{call Comparativo(?)}");
+					CallableStatement stmnt = con.prepareCall("{call obtenerPProducto(?)}");
 					stmnt.setString(1, mail);
 					//resp = stmnt.getString(1);
 					stmnt.executeUpdate();
