@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.gema.logIn.DBConnection;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -56,11 +57,15 @@ public class ObtenerPerfilVendedor extends HttpServlet {
 					//resp = stmnt.getString(1);
 					stmnt.executeUpdate();
 					ResultSet rs = stmnt.getResultSet();
-					while(rs.next()){
-						json.put("activo", rs.getString(1));
-						json.put("imagen", rs.getString(2));
-						json.put("nombre", rs.getString(3));
-						json.put("ubicacionInt", rs.getString(4));
+					int fetchedSize = rs.getFetchSize();
+					json.put("length", fetchedSize);
+					for(int i=0; i<fetchedSize; i++){
+						JSONArray jarr = new JSONArray();
+						jarr.put(1, rs.getString(1));
+						jarr.put(2, rs.getString(2));
+						jarr.put(3, rs.getString(3));
+						jarr.put(4, rs.getString(4));
+						json.put("arr" + (i+1), jarr);
 						//resp = resp.concat("\nActivo:" + rs.getString(1) + ", imagen:" + rs.getString(2) + ", nombre:" + rs.getString(3) + ", ubicacionInt" + rs.getString(4));
 					}
 				} catch (SQLException e) {
@@ -73,7 +78,7 @@ public class ObtenerPerfilVendedor extends HttpServlet {
 				} finally {
 					ping.closeConnection();
 				}
-				out.print(resp);
+				out.print(json.toString());
 		//doGet(request, response);
 	}
 

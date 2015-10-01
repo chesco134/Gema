@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.gema.logIn.DBConnection;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Servlet implementation class PerfilProducto
@@ -21,6 +24,7 @@ import org.gema.logIn.DBConnection;
 @WebServlet("/PerfilProducto")
 public class PerfilProducto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	JSONObject json;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -54,18 +58,23 @@ public class PerfilProducto extends HttpServlet {
 			//resp = stmnt.getString(1);
 			stmnt.executeUpdate();
 			ResultSet rs = stmnt.getResultSet();
-			while(rs.next()){
-				//Orden de Brenda//
-				//resp = resp.concat("\nActivo:" + rs.getString(1) + ", imagen:" + rs.getString(2) + ", nombre:" + rs.getString(3) + ", ubicacionInt" + rs.getString(4));
+			int fetchedSize = rs.getFetchSize();
+			json.put("length", fetchedSize);
+			for(int i=0; i<fetchedSize; i++){
+				JSONArray jarr = new JSONArray();
+				jarr.put(1, rs.getString(1));
+				jarr.put(2, rs.getString(2));
+				jarr.put(3, rs.getString(3));
+				json.put("arr" + (i+1), jarr);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resp = e.getMessage();
 		} finally {
 			ping.closeConnection();
 		}
-		out.print(resp);
+		out.print(json.toString());
 	}
 
 }
