@@ -9,6 +9,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Alumnos/Documents/TomCat/android-support-v7-appcompat.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sala9/git/Gema/HelloWorldWeb/WebContent/android-support-v7-appcompat.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
