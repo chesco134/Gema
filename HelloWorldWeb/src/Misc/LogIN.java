@@ -39,7 +39,7 @@ public class LogIN extends HttpServlet {
 				String tag = request.getParameter("mail");
 				String tag2 = request.getParameter("psswd");
 				DBConnection ping = new DBConnection();
-				Connection con =  ping.makeConnection("root", "sharPedo319");
+				Connection con =  ping.makeConnection("jirachi", "sharPedo319");
 				String resp = null;
 				try {
 					CallableStatement stmnt = con.prepareCall("{call logIn(?,?,?)}");

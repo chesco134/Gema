@@ -39,7 +39,7 @@ public class Horarios extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String mail = request.getParameter("Correo");
 		DBConnection ping = new DBConnection();
-		Connection con =  ping.makeConnection("root", "sharPedo319");
+		Connection con =  ping.makeConnection("jirachi", "sharPedo319");
 		String resp = null;
 		try {
 			Date date = new Date ();
@@ -72,7 +72,7 @@ public class Horarios extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String mail = request.getParameter("Correo");
 		DBConnection ping = new DBConnection();
-		Connection con =  ping.makeConnection("root", "sharPedo319");
+		Connection con =  ping.makeConnection("jirachi", "sharPedo319");
 		String resp = null;
 		try {
 			Date date = new Date ();

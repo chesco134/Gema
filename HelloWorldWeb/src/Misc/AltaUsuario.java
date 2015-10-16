@@ -43,7 +43,7 @@ public class AltaUsuario extends HttpServlet {
 		String tag3 = request.getParameter("Psswd");
 		String tag4 = request.getParameter("Nombre");
 		DBConnection ping = new DBConnection();
-		Connection con = ping.makeConnection("root", "sharPedo319");
+		Connection con = ping.makeConnection("jirachi", "sharPedo319");
 		String resp = null;
 		try {
 			CallableStatement stmnt = con.prepareCall("{call signUp(?,?,?,?,?)}");
@@ -78,7 +78,7 @@ public class AltaUsuario extends HttpServlet {
 		String tag3 = request.getParameter("Psswd");
 		String tag4 = request.getParameter("Nombre");
 		DBConnection ping = new DBConnection();
-		Connection con = ping.makeConnection("root", "sharPedo319");
+		Connection con = ping.makeConnection("jirachi", "sharPedo319");
 		String resp = null;
 		try {
 			CallableStatement stmnt = con.prepareCall("{call signUp(?,?,?,?,?)}");

@@ -36,7 +36,7 @@ public class AltaProducto extends HttpServlet {
 		int prod1 = Integer.parseInt(request.getParameter("idProducto"));
 		String prod2 = request.getParameter("nombre");
 		DBConnection ping = new DBConnection();
-		Connection con = ping.makeConnection("root", "sharPedo319");
+		Connection con = ping.makeConnection("jirachi", "sharPedo319");
 		String resp = null;
 		
 		try {
@@ -69,7 +69,7 @@ public class AltaProducto extends HttpServlet {
 			int prod = Integer.parseInt(request.getParameter("idProducto"));
 			String prod2 = request.getParameter("nombre");
 			DBConnection ping = new DBConnection();
-			Connection con = ping.makeConnection("root", "sharPedo319");
+			Connection con = ping.makeConnection("jirachi", "sharPedo319");
 			String resp = null;
 			
 			try {

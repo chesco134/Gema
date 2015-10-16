@@ -51,7 +51,7 @@ public class EncapsulamientoPrueba extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String obj = request.getParameter("obj");
 		DBConnection ping = new DBConnection();
-		Connection con = ping.makeConnection("root", "sharPedo319");
+		Connection con = ping.makeConnection("jirachi", "sharPedo319");
 		String resp = null;
 		String resp2 = null;
 		String resp3 = null;
