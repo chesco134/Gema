@@ -36,7 +36,7 @@ import org.json.JSONObject;
 @WebServlet("/SignUp")
 public class SignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static final String usrName = "root";
+    private static final String usrName = "jirachi";
     private static final String usrPsswd = "sharPedo319";
        
     /**
@@ -88,18 +88,22 @@ public class SignUp extends HttpServlet {
 			String mail = json.getString("mail");
 			String name = json.getString("name");
 			String psswd = json.getString("psswd");
+			int tipoUsuario = json.getInt("tipo_usuario");
 			String dateOfBirth = json.getString("dateOfBirth");
+			String escuela = json.getString("escuela");
 			DBConnection db = new DBConnection();
 			Connection con = db.makeConnection(usrName, usrPsswd);
 			if(con != null){
-				CallableStatement call = con.prepareCall("{call registerUser(?,?,?,?,?)}");
+				CallableStatement call = con.prepareCall("{call singIn(?,?,?,?,?,?,?)}");
 				call.setNString(1, mail);
-				call.setNString(2, name);
-				call.setNString(3, psswd);
-				call.setNString(4, dateOfBirth);
-				call.registerOutParameter(5, Types.VARCHAR);
+				call.setNString(2, psswd);
+				call.setNString(3, name);
+				call.setInt(4, tipoUsuario);
+				call.setNString(5, escuela);
+				call.setNString(6, dateOfBirth);
+				call.registerOutParameter(7, Types.VARCHAR);
 				call.executeUpdate();
-				result = call.getString(5);
+				result = call.getString(7);
 				db.closeConnection();
 			}
 		} catch(IOException e){

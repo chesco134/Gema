@@ -34,12 +34,12 @@ public class PublicEncryptionUtility {
 	/**
 	 * String to hold the name of the private key file.
 	 */
-	public static final String PRIVATE_KEY_FILE = "~/Develops/Secure/private.der";
+	public static final String PRIVATE_KEY_FILE = "Secure/private.der";
 
 	/**
 	 * String to hold name of the public key file.
 	 */
-	public static final String PUBLIC_KEY_FILE = "~/Develops/Secure/public.der";
+	public static final String PUBLIC_KEY_FILE = "Secure/public.der";
 
 	/**
 	 * Generate key which contains a pair of private and public key using 1024

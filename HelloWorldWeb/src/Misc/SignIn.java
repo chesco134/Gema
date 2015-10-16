@@ -45,7 +45,7 @@ import org.json.JSONObject;
 @WebServlet("/SignIn")
 public class SignIn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String usrName = "root"; // Parámetro usado para ejemplo de la conexión a BD.
+	private static final String usrName = "jirachi"; // Parámetro usado para ejemplo de la conexión a BD.
 	private static final String usrPsswd = "sharPedo319"; // Parámetro usado para ejemplo de la conexión con BD.
     /**
      * @see HttpServlet#HttpServlet()
