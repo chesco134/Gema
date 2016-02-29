@@ -40,6 +40,13 @@ public class VehicleDataReceiver extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+    	PrintWriter pw = response.getWriter();
+    	pw.write("Hola Alan");
+    	pw.close();
+    }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -92,7 +99,7 @@ public class VehicleDataReceiver extends HttpServlet {
 				stmnt.executeUpdate();
 				salida.write("OK".getBytes());
 				break;
-			case 2: // Update data for Location
+			case 2: // Update data for RPM
 				float rpm = Float.parseFloat(json.getString("RPM").split("RPM")[0]);
 				stmnt = con.prepareStatement("insert into RPM(RPM,Viaje_idViaje) values(?,?)");
 				stmnt.setFloat(1, rpm);
@@ -108,7 +115,7 @@ public class VehicleDataReceiver extends HttpServlet {
 				stmnt.executeUpdate();
 				salida.write("OK".getBytes());
 				break;
-			case 4:
+			case 4: // Update data for Location
 				String latitud = json.getString("Latitud");
 				String longitud = json.getString("Longitud");
 				CallableStatement cstmnt = con.prepareCall("{call insertaUbicacion(?,?,?)}");
@@ -123,6 +130,14 @@ public class VehicleDataReceiver extends HttpServlet {
 				stmnt = con.prepareStatement("UPDATE Viaje SET fechaFin = ? where idViaje = ?");
 				stmnt.setDate(1, new java.sql.Date(new SimpleDateFormat("dd/MM/yyyy").parse(json.getString("fechaFin")).getTime()));
 				stmnt.setInt(2, tripId);
+				stmnt.executeUpdate();
+				salida.write("OK".getBytes());
+				break;
+			case 6: // Update data for Throttle position
+				float pda = Float.parseFloat(json.getString("PdA").split("%")[0]);
+				stmnt = con.prepareStatement("insert into PdA(PdA,Viaje_idViaje) values(?,?)");
+				stmnt.setFloat(1, pda);
+				stmnt.setInt(2, id);
 				stmnt.executeUpdate();
 				salida.write("OK".getBytes());
 				break;
